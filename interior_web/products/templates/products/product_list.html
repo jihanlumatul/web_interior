@@ -31,6 +31,30 @@
 
 </div>
 
+<div class="d-flex justify-content-center gap-3 flex-wrap">
+    
+    <a href="{% url 'products' %}"
+    class="filter-btn">
+        All
+    </a>
+
+    <a href="?status=ready"
+    class="filter-btn">
+        Ready
+    </a>
+
+    <a href="?status=sold"
+    class="filter-btn">
+        Sold
+    </a>
+
+    <a href="?status=custom"
+    class="filter-btn">
+        Custom
+    </a>
+
+</div>
+
 <section class="container py-5">
     <div class="row g-4">
 
@@ -79,11 +103,12 @@
 
                     <div class="product-button">
 
-                        <button class="btn btn-outline-dark w-100">
+                        <a href="{% url 'product_detail' product.id %}" 
+                        class="btn btn-outline-dark w-100"> 
 
                             Details
 
-                        </button>
+                        </a>
 
                     </div>
 

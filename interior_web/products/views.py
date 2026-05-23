@@ -14,16 +14,20 @@ def home(request):
 def product_list(request):
 
     search = request.GET.get('search')
+    status = request.GET.get('status')
+    products = Product.objects.all()
 
     if search:
 
-        products = Product.objects.filter(
+        products = products.filter(
             name__icontains=search
         )
 
-    else:
+    if status:
 
-        products = Product.objects.all()
+        products = products.filter(
+            status=status
+        )
 
     context = {
         'products': products
@@ -32,5 +36,19 @@ def product_list(request):
     return render(
         request,
         'products/product_list.html',
+        context
+    )
+
+def product_detail(request, id):
+
+    product = Product.objects.get(id=id)
+
+    context = {
+        'product': product
+    }
+
+    return render(
+        request,
+        'products/product_detail.html',
         context
     )

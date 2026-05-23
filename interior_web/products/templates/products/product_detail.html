@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <div class="row align-items-center g-5">
+
+        <!-- IMAGE -->
+
+        <div class="col-lg-6">
+
+            <img src="{{ product.image.url }}"
+            class="img-fluid detail-image">
+
+        </div>
+
+        <!-- DETAIL -->
+
+        <div class="col-lg-6">
+
+            {% if product.status == 'ready' %}
+
+                <span class="status-ready">
+                    ready
+                </span>
+
+            {% elif product.status == 'sold' %}
+
+                <span class="status-sold">
+                    sold
+                </span>
+
+            {% elif product.status == 'custom' %}
+
+                <span class="status-custom">
+                    custom
+                </span>
+
+            {% endif %}
+
+            <h1 class="fw-bold mt-3">
+
+                {{ product.name }}
+
+            </h1>
+
+            <h3 class="text-muted mt-3">
+
+                Rp {{ product.price }}
+
+            </h3>
+
+            <p class="detail-description mt-4">
+
+                {{ product.description }}
+
+            </p>
+
+            <div class="d-flex gap-3 mt-4">
+
+                <a href="#"
+                class="btn btn-dark px-4 py-3">
+
+                    Consultation
+
+                </a>
+
+                <a href="#"
+                class="btn btn-outline-dark px-4 py-3">
+
+                    WhatsApp
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

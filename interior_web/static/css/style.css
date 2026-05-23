@@ -1,0 +1,265 @@
+<!--CSS BANNER-->
+
+.hero-section{
+    position: relative;
+}
+
+.hero-image{
+    width: 100%;
+    height: 90vh;
+    object-fit: cover;
+}
+
+.hero-overlay{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: white;
+}
+
+.hero-overlay h1{
+    font-size: 60px;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0,5);
+}
+
+.hero-overlay p{
+    font-size: 18px;
+    margin-top: 20px;
+    max-width: 500px;
+}
+
+@media(max-width:768px){
+    .hero-image{
+        height: 60vh;
+
+        }
+    }
+
+    .hero-overlay{
+        left: 5%;
+    }
+
+    .hero-overlay h1{
+        font-size: 32px;
+    }
+
+    .hero-overlay p{
+        font-size: 14px;
+    }
+
+    .nav-item:hover{
+        color: #622B14;
+        letter-spacing: 2px;
+        transition: 0.5s;
+    }
+
+/* CSS POPULAR PRODUCT */
+
+.product-card{
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.product-card img{
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.product-card:hover{
+    transform: translateY(-10px);
+}
+
+.product-card:hover img{
+     transform: scale(1.05);
+}
+
+.product-card-body{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-title{
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.4;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+.product-button{
+    margin-top: auto;
+}
+
+.status-ready,
+.status-sold,
+.status-custom{
+
+    display: inline-block;
+
+    padding: 1px 15px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+
+    font-weight: 400;
+
+    width: fit-content;
+}
+
+/* READY */
+.status-ready{
+    border: 1px solid #28a745;
+    color: #28a745;
+
+}
+
+/* SOLD */
+.status-sold{
+    border: 1px solid #dc3545;
+    color: #dc3545;
+
+}
+
+/* CUSTOM */
+.status-custom{
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+
+}
+
+/* CUSTOM SECTION IMAGE */
+.custom-section-image{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.custom-section{
+    background-color: #faddc4;
+    border-radius: 10px;
+    padding: 18px;
+}
+
+
+/* GALLERY HOME */
+.gallery-card{
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: white;
+    transition: 0.3s;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.gallery-card img{
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.gallery-card:hover{
+    transform: translateY(-8px);
+}
+
+.gallery-card:hover img{
+    transform: scale(1.05);
+}
+
+.gallery-content{
+    padding: 10px;
+    text-align: center;
+}
+
+.gallery-link{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.gallery-link:hover{
+    letter-spacing: 2px;
+    color: #555;
+}
+
+
+
+/* CARD WHY CHOOSE US */ 
+.why-card{
+    padding: 20px 10px;
+    border-radius: 20px;
+    background-color: white;
+    transition: 0.3s;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    min-height: 230px;
+}
+
+.why-card:hover{
+    transform: translateY(-8px);
+    letter-spacing: 1.5px;
+}
+
+.why-icon{
+    font-size: 40px;
+}
+
+
+/* CSS UNTUK FOOTER */ 
+.footer-section{
+    background-color: #c4a185;
+}
+
+.footer-link{
+    text-decoration: none;
+    color: #202020;
+    transition: 0.3s;
+}
+
+.footer-link:hover{
+    color: #653724;
+    letter-spacing: 2px;
+}
+
+.footer-line{
+    border-color: #000000;
+    border-width: 2px;
+}
+
+.dev-credit{
+    color: #653724c9;
+    font-size: 8px;
+}
+
+
+/* SEARCH PRODUCT */
+.search-input{
+    height: 55px;
+    border-radius: 999px;
+    border: 1px solid #ddd;
+    padding-left: 25px;
+    font-size: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+}
+
+.search-input:focus{
+    box-shadow: none;
+    border-color: #111;
+}

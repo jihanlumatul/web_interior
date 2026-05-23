@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="fw-bold">
+
+        Products Page
+
+    </h1>
+
+</div>
+
+<div class="row justify-content-center mb-5">
+
+    <div class="col-md-6">
+
+        <form method="GET">
+
+            <input
+                type="text"
+                name="search"
+                class="form-control search-input"
+                placeholder="Search furniture..."
+            >
+
+        </form>
+
+    </div>
+
+</div>
+
+<section class="container py-5">
+    <div class="row g-4">
+
+        {% for product in products %}
+
+        <div class="col-lg-3 col-md-4 col-6">
+
+            <div class="product-card">
+
+                <img src="{{ product.image.url }}"
+                class="img-fluid product-image">
+
+                <div class="product-card-body">
+
+                    {% if product.status == 'ready' %}
+
+                        <span class="status-ready">
+                            ready
+                        </span>
+
+                    {% elif product.status == 'sold' %}
+
+                        <span class="status-sold">
+                            sold
+                        </span>
+
+                    {% elif product.status == 'custom' %}
+
+                        <span class="status-custom">
+                            custom
+                        </span>
+
+                    {% endif %}
+
+                    <h5 class="product-title mt-3">
+
+                        {{ product.name }}
+
+                    </h5>
+
+                    <p class="text-muted">
+
+                        Rp {{ product.price }}
+
+                    </p>
+
+                    <div class="product-button">
+
+                        <button class="btn btn-outline-dark w-100">
+
+                            Details
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endblock %}

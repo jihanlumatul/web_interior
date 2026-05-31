@@ -49,12 +49,6 @@
         font-size: 14px;
     }
 
-    .nav-item:hover{
-        color: #622B14;
-        letter-spacing: 2px;
-        transition: 0.5s;
-    }
-
 /* CSS POPULAR PRODUCT */
 
 .product-card{
@@ -289,4 +283,20 @@
 .filter-btn:hover{
     background: #F7F7E8;
     color: rgb(0, 0, 0);
+}
+
+/* NAVBAR */
+.nav-link.active{
+    color: #fff7ed !important;
+    font-weight: 600;
+}
+
+.nav-item:hover{
+    color: #622B14;
+    letter-spacing: 2px;
+    transition: 0.5s;
+}
+
+.nav-link{
+    color:#000000;
 }

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card border-0 shadow-sm p-4">
+
+                <h1 class="fw-bold mb-4">
+                    Request Consultation
+                </h1>
+
+                <form method="POST"
+                    enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Full Name
+                        </label>
+
+                        {{ form.customer_name }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Email Address
+                        </label>
+
+                        {{ form.email }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Phone Number
+                        </label>
+
+                        {{ form.phone }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Furniture Type
+                        </label>
+
+                        {{ form.furniture_type }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Project Description
+                        </label>
+
+                        {{ form.description }}
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">
+                            Reference Image
+                        </label>
+
+                        {{ form.reference_image }}
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-dark px-4">
+
+                        Submit Request
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

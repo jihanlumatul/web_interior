@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="container py-5 text-center">
+
+    <div class="py-5">
+
+        <h1 class="fw-bold">
+            Consultation Submitted Successfully
+        </h1>
+
+        <p class="text-muted mt-3">
+            Thank you for choosing MKD Design.
+            Our team will review your request and contact you shortly.
+        </p>
+
+        <a href="{% url 'home' %}"
+        class="btn btn-dark mt-4">
+            Back To Home
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

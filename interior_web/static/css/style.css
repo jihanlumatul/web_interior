@@ -395,6 +395,11 @@
     margin-bottom: 50px;
 }
 
+.gallery-wrapper{
+    width: 96%;
+    margin: 0 auto;
+}
+
 
 
 /* Custom Styles */

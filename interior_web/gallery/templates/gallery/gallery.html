@@ -23,60 +23,61 @@
     </p>
 
 </div>
+<div class="gallery-wrapper">
+    <div class="gallery-filters">
 
-<div class="gallery-filters">
+        <a href="{% url 'gallery' %}" class="gallery-filter">
+            All
+        </a>
 
-    <a href="{% url 'gallery' %}" class="gallery-filter">
-        All
-    </a>
+        <a href="?category=home" class="gallery-filter">
+            Home
+        </a>
 
-    <a href="?category=home" class="gallery-filter">
-        Home
-    </a>
+        <a href="?category=livingroom" class="gallery-filter">
+            Living Room
+        </a>
 
-    <a href="?category=livingroom" class="gallery-filter">
-        Living Room
-    </a>
+        <a href="?category=bedroom" class="gallery-filter">
+            Bedroom
+        </a>
 
-    <a href="?category=bedroom" class="gallery-filter">
-        Bedroom
-    </a>
+        <a href="?category=office" class="gallery-filter">
+            Office
+        </a>
 
-    <a href="?category=office" class="gallery-filter">
-        Office
-    </a>
+        <a href="?category=cafe" class="gallery-filter">
+            Cafe
+        </a>
 
-    <a href="?category=cafe" class="gallery-filter">
-        Cafe
-    </a>
+    </div>
 
-</div>
+    <div class="gallery-masonry">
 
-<div class="gallery-masonry">
+        {% for item in galleries %}
 
-    {% for item in galleries %}
+            <div class="gallery-item">
 
-        <div class="gallery-item">
+                <img
+                    src="{{ item.image.url }}"
+                    alt="{{ item.title }}"
+                >
 
-            <img
-                src="{{ item.image.url }}"
-                alt="{{ item.title }}"
-            >
+                <div class="gallery-overlay">
 
-            <div class="gallery-overlay">
+                    <h5>
 
-                <h5>
+                        {{ item.title }}
 
-                    {{ item.title }}
+                    </h5>
 
-                </h5>
+                </div>
 
             </div>
 
-        </div>
+        {% endfor %}
 
-    {% endfor %}
-
+    </div>
 </div>
 
 {% endblock %}

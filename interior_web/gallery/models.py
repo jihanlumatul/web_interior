@@ -3,7 +3,7 @@ from django.db import models
 class Gallery(models.Model):
 
     CATEGORY_CHOICES = [
-
+        ('home', 'Home'),
         ('livingroom', 'Living Room'),
         ('bedroom', 'Bedroom'),
         ('office', 'Office'),

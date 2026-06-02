@@ -283,6 +283,7 @@
 .filter-btn:hover{
     background: #F7F7E8;
     color: rgb(0, 0, 0);
+    letter-spacing: 2px;
 }
 
 /* NAVBAR */
@@ -299,4 +300,235 @@
 
 .nav-link{
     color:#000000;
+}
+
+
+
+/* GALLERY PAGE */
+.gallery-masonry{
+    column-count:4;
+    column-gap:20px;
+}
+
+.gallery-item{
+    position:relative;
+    margin-bottom:20px;
+    break-inside:avoid;
+    overflow:hidden;
+    border-radius:16px;
+}
+
+.gallery-item img{
+    width:100%;
+    display:block;
+    border-radius:16px;
+    transition:0.4s;
+}
+
+/* penyesuaian layar gallery */
+@media (max-width:992px){
+    .gallery-masonry{
+        column-count:3;
+    }
+
+}
+
+@media (max-width:768px){
+    .gallery-masonry{
+        column-count:2;
+    }
+
+}
+
+@media (max-width:576px){
+    .gallery-masonry{
+        column-count:1;
+    }
+
+}
+
+.gallery-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.4);
+    display:flex;
+    align-items:end;
+    padding:20px;
+    opacity:0;
+    transition:0.4s;
+}
+
+.gallery-overlay h5{
+    color:white;
+    margin:0;
+}
+
+.gallery-item:hover .gallery-overlay{
+    opacity:1;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.05);
+}
+
+.gallery-filter{
+    padding: 5px 15px;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #111;
+    transition: 0.3s;
+    font-size: 12px;
+}
+
+.gallery-filter:hover{
+    background: #F7F7E8;
+    color: rgb(0, 0, 0);
+    letter-spacing: 2px;
+}
+
+.gallery-filters{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+
+
+/* Custom Styles */
+/* --- Global & Typography Accent --- */
+.fw-black {
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, #2b2b2b, #707070);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tracking-widest {
+    letter-spacing: 0.15em;
+}
+
+.bg-soft-gray {
+    background-color: #f9f9fb; /* Membuat kontras agar card putih di atasnya "pop out" */
+}
+
+/* --- Hero Section Styling --- */
+.badge-custom {
+    background-color: #f0f0f2;
+    color: #495057;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.hero-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+.custom-hero-img {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    object-fit: cover;
+    width: 100%;
+    height: 450px; /* Menjaga proporsi tinggi gambar banner tetap sinematik */
+}
+
+.hero-image-wrapper:hover .custom-hero-img {
+    transform: scale(1.03); /* Efek zoom tipis ala web modern saat di-hover */
+}
+
+/* --- Process Card (Gen-Z / Clean Upgrade) --- */
+.process-card {
+    padding: 40px 30px;
+    background: #ffffff;
+    border: 1px solid #eaeaea; /* Mengganti shadow tebal dengan border tipis elegan */
+    border-radius: 24px;       /* Lebih melengkung agar terasa santai/friendly */
+    text-align: left;          /* Mengubah rata tengah jadi rata kiri agar tampak lebih profesional */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #e2e8f0;            /* Warna angka dibuat samar/soft agar tidak mendominasi teks utama */
+    line-height: 1;
+    font-family: monospace, sans-serif; /* Sentuhan tech-vibe tipis */
+}
+
+/* Hover Effect */
+.process-card:hover {
+    transform: translateY(-8px);
+    background: #ffffff;
+    border-color: #111111;     /* Berubah hitam tipis saat disentuh, sangat clean! */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+}
+
+.process-card:hover .step-number {
+    color: #111111;            /* Angka berubah hitam tegas saat card di-hover */
+    transition: color 0.3s ease;
+}
+
+/* portofolio card */
+.portofolio-img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 24px;
+    transition: 0.4s;
+}
+
+.portofolio-img:hover{
+    transform: scale(1.03);
+}
+
+
+/* about page */
+/* --- About Us Specific Styling --- */
+
+/* Gambar dengan efek crop estetik dan bayangan lembut */
+.about-image-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+}
+
+.about-img {
+    width: 100%;
+    height: 450px; /* Membuat gambar portrait/tinggi yang elegan */
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+.about-image-wrapper:hover .about-img {
+    transform: scale(1.02);
+}
+
+/* Value Item tanpa border kotak (Borderless Clean Look) */
+.value-item {
+    padding-left: 15px;
+    border-left: 2px solid #e2e8f0; /* Garis vertikal tipis di sebelah kiri sebagai aksen */
+    transition: border-color 0.3s ease;
+}
+
+.value-item:hover {
+    border-left-color: #111111; /* Garis berubah hitam tegas saat di-hover */
+}
+
+.value-icon-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #111111;
+    border-radius: 50%;
+    margin-bottom: 5px;
 }

@@ -2,13 +2,80 @@
 
 {% block content %}
 
-<div class="container py-5">
+<div class="text-center mb-5">
 
-    <h1 class="fw-bold text-center">
+    <p class="text-muted">
 
-        Interior Gallery
+        OUR PROJECTS
+
+    </p>
+
+    <h1 class="fw-bold">
+
+        Interior Inspiration Gallery
 
     </h1>
+
+    <p class="text-muted">
+
+        Explore our custom furniture and interior projects.
+
+    </p>
+
+</div>
+
+<div class="gallery-filters">
+
+    <a href="{% url 'gallery' %}" class="gallery-filter">
+        All
+    </a>
+
+    <a href="?category=home" class="gallery-filter">
+        Home
+    </a>
+
+    <a href="?category=livingroom" class="gallery-filter">
+        Living Room
+    </a>
+
+    <a href="?category=bedroom" class="gallery-filter">
+        Bedroom
+    </a>
+
+    <a href="?category=office" class="gallery-filter">
+        Office
+    </a>
+
+    <a href="?category=cafe" class="gallery-filter">
+        Cafe
+    </a>
+
+</div>
+
+<div class="gallery-masonry">
+
+    {% for item in galleries %}
+
+        <div class="gallery-item">
+
+            <img
+                src="{{ item.image.url }}"
+                alt="{{ item.title }}"
+            >
+
+            <div class="gallery-overlay">
+
+                <h5>
+
+                    {{ item.title }}
+
+                </h5>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
 
 </div>
 

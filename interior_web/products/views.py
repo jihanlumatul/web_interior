@@ -54,3 +54,15 @@ def product_detail(request, id):
         'products/product_detail.html',
         context
     )
+
+def custom_page(request):
+    return render(
+        request,
+        'products/custom.html'
+    )
+
+def about(request):
+    return render(
+        request,
+        'products/about.html'
+    )

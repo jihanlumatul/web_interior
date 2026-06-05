@@ -94,20 +94,17 @@
                     {{ order.created_at }}
                 </p>
 
+                <div class="mt-4">
+                    <a href="{% url 'download_receipt' order.id %}"
+                    class="btn btn-success">
+                        Download Receipt PDF
+                    </a>
+                </div>
+
                 {% endif %}
 
             </div>
 
-            <div class="mt-4">
-
-                <a href="{% url 'download_receipt' order.id %}"
-                class="btn btn-success">
-
-                    Download Receipt PDF
-
-                </a>
-
-            </div>
 
         </div>
 

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Product
+from orders.models import Order
 
 
 def home(request):
@@ -66,3 +67,4 @@ def about(request):
         request,
         'products/about.html'
     )
+

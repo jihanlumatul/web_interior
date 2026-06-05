@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm border-0 p-4">
+
+                <h2 class="fw-bold mb-4">
+                    Track Your Order
+                </h2>
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    <input
+                        type="text"
+                        name="order_code"
+                        class="form-control mb-3"
+                        placeholder="Enter Order Code"
+                    >
+
+                    <button
+                        class="btn btn-dark">
+
+                        Check Status
+
+                    </button>
+
+                </form>
+
+                {% if order %}
+
+                <hr>
+
+                <p>
+                    <strong>Order Code:</strong>
+                    {{ order.order_code }}
+                </p>
+
+                <p>
+                    <strong>Customer:</strong>
+                    {{ order.customer_name }}
+                </p>
+
+                <p>
+                    <strong>Furniture:</strong>
+                    {{ order.furniture_type }}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+
+                    {% if order.status == 'pending' %}
+
+                        <span class="badge bg-warning text-dark">
+                            Pending
+                        </span>
+
+                    {% elif order.status == 'paid' %}
+
+                        <span class="badge bg-primary">
+                            Paid
+                        </span>
+
+                    {% elif order.status == 'progress' %}
+
+                        <span class="badge bg-info text-dark">
+                            In Progress
+                        </span>
+
+                    {% elif order.status == 'delivery' %}
+
+                        <span class="badge bg-secondary">
+                            Out for Delivery
+                        </span>
+
+                    {% elif order.status == 'completed' %}
+
+                        <span class="badge bg-success">
+                            Completed
+                        </span>
+
+                    {% endif %}
+                </p>
+
+                <p>
+                    <strong>Order Date:</strong>
+                    {{ order.created_at }}
+                </p>
+
+                {% endif %}
+
+            </div>
+
+            <div class="mt-4">
+
+                <a href="{% url 'download_receipt' order.id %}"
+                class="btn btn-success">
+
+                    Download Receipt PDF
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,7 +1,15 @@
 from django.db import models
 from products.models import Product
+from datetime import datetime
 
 class Order(models.Model):
+
+    order_code = models.CharField(
+        max_length=20, 
+        unique=True, 
+        blank=True,
+        null=True
+    )
 
     product = models.ForeignKey(
         Product,
@@ -11,10 +19,11 @@ class Order(models.Model):
     )
 
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('paid', 'Paid'),
+        ('pending', 'Pending Payment'),
+        ('paid', 'Paid'), 
         ('progress', 'In Progress'),
         ('completed', 'Completed'),
+        ('delivery', 'Out for Delivery'),
     ]
 
     customer_name = models.CharField(max_length=100)
@@ -46,4 +55,18 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.customer_name
+        return self.order_code
+    
+    def save(self, *args, **kwargs):
+
+        if not self.order_code:
+
+            year = datetime.now().year
+
+            last_order = Order.objects.count() + 1
+
+            self.order_code = (
+                f"MKD-{year}-{last_order:04d}"
+            )
+
+        super().save(*args, **kwargs)

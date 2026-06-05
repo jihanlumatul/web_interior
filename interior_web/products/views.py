@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Product
 from orders.models import Order
 
@@ -42,7 +42,7 @@ def product_list(request):
 
 def product_detail(request, id):
 
-    product = Product.objects.get(id=id)
+    product = get_object_or_404(Product, id=id)
     related_products = Product.objects.exclude(id=id)[:4]
 
     context = {

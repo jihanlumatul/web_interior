@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import OrderForm
 from products.models import Product
 from .models import Order
@@ -27,7 +27,7 @@ def order_create(request):
 
 def order_product(request, product_id):
 
-    product = Product.objects.get(id=product_id)
+    product = get_object_or_404(Product, id=product_id)
 
     if request.method == 'POST':
 
@@ -38,7 +38,9 @@ def order_product(request, product_id):
 
         if form.is_valid():
 
-            order = form.save()
+            order = form.save(commit=False)
+            order.product = product
+            order.save()
 
             return redirect(
                 'payment_upload',
@@ -72,7 +74,7 @@ def order_success(request):
     )
 
 def payment_upload(request, order_id):
-    order = Order.objects.get(id=order_id)
+    order = get_object_or_404(Order, id=order_id)
 
     if request.method == 'POST':
         order.payment_proof = request.FILES.get('payment_proof')
@@ -90,7 +92,7 @@ def payment_upload(request, order_id):
 
 def receipt(request, order_id):
 
-    order = Order.objects.get(id=order_id)
+    order = get_object_or_404(Order, id=order_id)
 
     return render(
         request,
@@ -101,7 +103,7 @@ def receipt(request, order_id):
 
 def download_receipt(request, order_id):
 
-    order = Order.objects.get(id=order_id)
+    order = get_object_or_404(Order, id=order_id)
 
     response = HttpResponse(
         content_type='application/pdf'

@@ -10,6 +10,7 @@ class OrderAdmin(admin.ModelAdmin):
         'email',
         'phone',
         'furniture_type',
+        'payment_preview',
         'status',
         'created_at'
     )
@@ -26,6 +27,7 @@ class OrderAdmin(admin.ModelAdmin):
     )
 
     readonly_fields = (
+        'payment_preview',
         'payment_proof',
         'order_code',
         'created_at'

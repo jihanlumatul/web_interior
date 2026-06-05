@@ -4,54 +4,55 @@
 
 <div class="container py-5">
 
-    <h1 class="fw-bold">
-
+    <h1 class="fw-bold text-center mb-4">
         Products Page
-
     </h1>
 
-</div>
+    <div class="row justify-content-center mb-4">
 
-<div class="row justify-content-center mb-5">
+        <div class="col-md-6">
 
-    <div class="col-md-6">
+            <form method="GET">
+                {% if request.GET.status %}
+                <input type="hidden" name="status" value="{{ request.GET.status }}">
+                {% endif %}
+                <input
+                    type="text"
+                    name="search"
+                    class="form-control search-input"
+                    placeholder="Search furniture..."
+                    value="{{ request.GET.search|default:'' }}"
+                >
 
-        <form method="GET">
+            </form>
 
-            <input
-                type="text"
-                name="search"
-                class="form-control search-input"
-                placeholder="Search furniture..."
-            >
-
-        </form>
+        </div>
 
     </div>
 
-</div>
+    <div class="d-flex justify-content-center gap-3 flex-wrap mb-2">
+        
+        <a href="{% url 'products' %}{% if request.GET.search %}?search={{ request.GET.search }}{% endif %}"
+        class="filter-btn {% if not request.GET.status %}active-filter{% endif %}">
+            All
+        </a>
 
-<div class="d-flex justify-content-center gap-3 flex-wrap">
-    
-    <a href="{% url 'products' %}"
-    class="filter-btn">
-        All
-    </a>
+        <a href="?status=ready{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}"
+        class="filter-btn {% if request.GET.status == 'ready' %}active-filter{% endif %}">
+            Ready
+        </a>
 
-    <a href="?status=ready"
-    class="filter-btn">
-        Ready
-    </a>
+        <a href="?status=sold{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}"
+        class="filter-btn {% if request.GET.status == 'sold' %}active-filter{% endif %}">
+            Sold
+        </a>
 
-    <a href="?status=sold"
-    class="filter-btn">
-        Sold
-    </a>
+        <a href="?status=custom{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}"
+        class="filter-btn {% if request.GET.status == 'custom' %}active-filter{% endif %}">
+            Custom
+        </a>
 
-    <a href="?status=custom"
-    class="filter-btn">
-        Custom
-    </a>
+    </div>
 
 </div>
 

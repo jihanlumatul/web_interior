@@ -63,10 +63,11 @@ class Order(models.Model):
 
             year = datetime.now().year
 
-            last_order = Order.objects.count() + 1
+            last_order_obj = Order.objects.order_by('-id').first()
+            next_id = (last_order_obj.id + 1) if last_order_obj else 1
 
             self.order_code = (
-                f"MKD-{year}-{last_order:04d}"
+                f"MKD-{year}-{next_id:04d}"
             )
 
         super().save(*args, **kwargs)

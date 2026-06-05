@@ -26,27 +26,27 @@
 <div class="gallery-wrapper">
     <div class="gallery-filters">
 
-        <a href="{% url 'gallery' %}" class="gallery-filter">
+        <a href="{% url 'gallery' %}" class="gallery-filter {% if not request.GET.category %}active-filter{% endif %}">
             All
         </a>
 
-        <a href="?category=home" class="gallery-filter">
+        <a href="?category=home" class="gallery-filter {% if request.GET.category == 'home' %}active-filter{% endif %}">
             Home
         </a>
 
-        <a href="?category=livingroom" class="gallery-filter">
+        <a href="?category=livingroom" class="gallery-filter {% if request.GET.category == 'livingroom' %}active-filter{% endif %}">
             Living Room
         </a>
 
-        <a href="?category=bedroom" class="gallery-filter">
+        <a href="?category=bedroom" class="gallery-filter {% if request.GET.category == 'bedroom' %}active-filter{% endif %}">
             Bedroom
         </a>
 
-        <a href="?category=office" class="gallery-filter">
+        <a href="?category=office" class="gallery-filter {% if request.GET.category == 'office' %}active-filter{% endif %}">
             Office
         </a>
 
-        <a href="?category=cafe" class="gallery-filter">
+        <a href="?category=cafe" class="gallery-filter {% if request.GET.category == 'cafe' %}active-filter{% endif %}">
             Cafe
         </a>
 

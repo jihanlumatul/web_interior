@@ -34,6 +34,12 @@
 
                 </form>
 
+                {% if request.method == 'POST' and not order %}
+                <div class="alert alert-danger mt-4" role="alert">
+                    Order with this code could not be found. Please double-check and try again.
+                </div>
+                {% endif %}
+
                 {% if order %}
 
                 <hr>

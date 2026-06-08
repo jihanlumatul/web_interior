@@ -69,11 +69,6 @@ def order_product(request, product_id):
         }
     )
 
-def order_success(request):
-    return render(
-        request,
-        'orders/order_success.html'
-    )
 
 def payment_upload(request, order_id):
     order = get_object_or_404(Order, id=order_id)

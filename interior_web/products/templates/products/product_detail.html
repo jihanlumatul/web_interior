@@ -4,7 +4,8 @@
 <!-- MAIN PRODUCT DETAIL -->
 <section class="product-detail-section py-5">
   <div class="container py-4">
-    <div class="row g-5 align-items-start"> <!-- Mengubah align-items-center ke start agar posisi teks rapi di atas jika deskripsi panjang -->
+    <div class="row g-5 align-items-start">
+      <!-- Mengubah align-items-center ke start agar posisi teks rapi di atas jika deskripsi panjang -->
 
       <!-- LEFT: IMAGE GALLERY DISPLAY -->
       <div class="col-lg-6">
@@ -15,15 +16,15 @@
 
       <!-- RIGHT: PRODUCT INFO & ACTION -->
       <div class="col-lg-6 product-info-container">
-        
+
         <!-- Status Badge -->
         <div class="status-badge-wrapper">
           {% if product.status == 'ready' %}
-            <span class="badge-status status-ready">Ready Stock</span>
+          <span class="badge-status status-ready">Ready Stock</span>
           {% elif product.status == 'sold' %}
-            <span class="badge-status status-sold">Sold Out</span>
+          <span class="badge-status status-sold">Sold Out</span>
           {% elif product.status == 'custom' %}
-            <span class="badge-status status-custom">Custom Order</span>
+          <span class="badge-status status-custom">Custom Order</span>
           {% endif %}
         </div>
 
@@ -45,23 +46,25 @@
         <!-- Action Buttons CTA -->
         <div class="d-flex flex-sm-row flex-column gap-3 mt-5">
           {% if product.status == 'ready' %}
-            <a href="{% url 'order_product' product.id %}" class="btn-detail-main flex-grow-1">
-              Order Now
-            </a>
+          <a href="{% url 'order_product' product.id %}" class="btn-detail-main flex-grow-1">
+            Order Now
+          </a>
           {% elif product.status == 'custom' %}
-            <a href="{% url 'order_create' %}" class="btn-detail-main flex-grow-1">
-              Request Consultation
-            </a>
+          <a href="{% url 'order_product' product.id %}" class="btn-detail-main flex-grow-1">
+            Request Consultation
+          </a>
           {% else %}
-            <button class="btn-detail-disabled flex-grow-1" disabled>
-              Out Of Stock
-            </button>
+          <button class="btn-detail-disabled flex-grow-1" disabled>
+            Out Of Stock
+          </button>
           {% endif %}
 
           <a href="https://wa.me/6285669976295?text=Halo%20MKD%20Design,%0A%0ASaya%20tertarik%20dengan%20produk:%20{{ product.name }}%0AHarga:%20Rp%20{{ product.price }}%0A%0AMohon%20informasi%20lebih%20lanjut."
-             target="_blank" class="btn-detail-outline">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp me-2" viewBox="0 0 16 16">
-              <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.925h.004c4.368 0 7.926-3.559 7.93-7.93a7.9 7.9 0 0 0-2.327-5.596ZM5.708 4.655c.122-.272.245-.274.364-.274.113-.005.244-.005.375.005.131.01.343.059.522.257.18.197.684.667.842.994.159.327.08.599-.028.812-.109.213-.18.344-.36.554-.18.21-.377.468-.539.63-.162.163-.33.34-.14.669.19.327.844 1.39 1.81 2.252.124.11.233.163.346.21.23.094.437.08.601.056.183-.027.562-.23 1.134-.562.183-.105.308-.2.378-.204.075-.003.224.04.474.165.25.125 1.666.785 1.745.845.079.06.13.088.148.121.019.032.019.188-.062.434-.081.247-.478.483-.664.514-.186.03-.368.047-.534-.044-.166-.092-.533-.213-1.013-.428-3.723-1.66-6.117-5.434-6.302-5.68-.184-.247-1.31-1.745-1.31-3.327 0-1.583.824-2.36 1.115-2.673.291-.314.637-.39.81-.39H5.71v-.003Z"/>
+            target="_blank" class="btn-detail-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-whatsapp me-2" viewBox="0 0 16 16">
+              <path
+                d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.925h.004c4.368 0 7.926-3.559 7.93-7.93a7.9 7.9 0 0 0-2.327-5.596ZM5.708 4.655c.122-.272.245-.274.364-.274.113-.005.244-.005.375.005.131.01.343.059.522.257.18.197.684.667.842.994.159.327.08.599-.028.812-.109.213-.18.344-.36.554-.18.21-.377.468-.539.63-.162.163-.33.34-.14.669.19.327.844 1.39 1.81 2.252.124.11.233.163.346.21.23.094.437.08.601.056.183-.027.562-.23 1.134-.562.183-.105.308-.2.378-.204.075-.003.224.04.474.165.25.125 1.666.785 1.745.845.079.06.13.088.148.121.019.032.019.188-.062.434-.081.247-.478.483-.664.514-.186.03-.368.047-.534-.044-.166-.092-.533-.213-1.013-.428-3.723-1.66-6.117-5.434-6.302-5.68-.184-.247-1.31-1.745-1.31-3.327 0-1.583.824-2.36 1.115-2.673.291-.314.637-.39.81-.39H5.71v-.003Z" />
             </svg>
             Contact WhatsApp
           </a>
@@ -88,11 +91,11 @@
             <img src="{{ product.image.url }}" class="card-img-top related-product-image" alt="{{ product.name }}">
             <div class="card-badge-position">
               {% if product.status == 'ready' %}
-                <span class="mini-badge-status m-ready">Ready</span>
+              <span class="mini-badge-status m-ready">Ready</span>
               {% elif product.status == 'sold' %}
-                <span class="mini-badge-status m-sold">Sold</span>
+              <span class="mini-badge-status m-sold">Sold</span>
               {% elif product.status == 'custom' %}
-                <span class="mini-badge-status m-custom">Custom</span>
+              <span class="mini-badge-status m-custom">Custom</span>
               {% endif %}
             </div>
           </div>

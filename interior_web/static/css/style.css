@@ -71,7 +71,7 @@
     box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
-/* WADAH GAMBAR & BADGE STATUS (Kunci Efek Mengambang) */
+/* WADAH GAMBAR & BADGE STATUS */
 .product-image-container {
     position: relative;
     overflow: hidden;
@@ -79,7 +79,7 @@
 }
 
 .product-card img.product-image {
-    height: 240px; /* Menyesuaikan tinggi standar rekomendasi */
+    height: 240px;
     width: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;

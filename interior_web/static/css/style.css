@@ -1,4 +1,4 @@
-<!--CSS BANNER-->
+/* CSS BANNER */
 
 .hero-section{
     position: relative;
@@ -49,94 +49,131 @@
         font-size: 14px;
     }
 
-/* CSS POPULAR PRODUCT */
 
-.product-card{
+
+
+
+/* CSS POPULAR PRODUCT */
+.product-card {
     background-color: white;
     border-radius: 15px;
     overflow: hidden;
     height: 100%;
     display: flex;
     flex-direction: column;
-    transition: 0.3s;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
 }
 
-.product-card img{
-    height: 180px;
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+/* WADAH GAMBAR & BADGE STATUS (Kunci Efek Mengambang) */
+.product-image-container {
+    position: relative;
+    overflow: hidden;
+    background-color: #fafafa;
+}
+
+.product-card img.product-image {
+    height: 240px; /* Menyesuaikan tinggi standar rekomendasi */
     width: 100%;
     object-fit: cover;
-    transition: 0.3s;
+    transition: transform 0.5s ease;
 }
 
-.product-card:hover{
-    transform: translateY(-10px);
+.product-card:hover img.product-image {
+    transform: scale(1.05);
 }
 
-.product-card:hover img{
-     transform: scale(1.05);
+/* Mengatur Posisi Mengambang di Kiri Atas Gambar */
+.product-status-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
 }
 
-.product-card-body{
-    padding: 20px;
+.status-ready,
+.status-sold,
+.status-custom {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 6px; 
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: fit-content;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* READY */
+.status-ready {
+    background-color: rgba(230, 244, 234, 0.95);
+    border: 1px solid #28a745;
+    color: #137333;
+}
+
+/* SOLD */
+.status-sold {
+    background-color: rgba(252, 232, 236, 0.95);
+    border: 1px solid #dc3545;
+    color: #c5221f;
+}
+
+/* CUSTOM */
+.status-custom {
+    background-color: rgba(232, 240, 254, 0.95);
+    border: 1px solid #0d6efd;
+    color: #1a73e8;
+}
+
+/* KONTEN TEKS KARTU */
+.product-card-body {
+    padding: 15px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.product-title{
-    font-size: 17px;
+.product-title {
+    font-size: 15px;
     font-weight: 600;
+    color: #1a1a1a;
     line-height: 1.4;
-
+    margin-bottom: 4px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-
     overflow: hidden;
+    height: 42px;
 }
 
-.product-button{
+.product-card-body p.text-muted {
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+/* TOMBOL */
+.product-button {
     margin-top: auto;
 }
 
-.status-ready,
-.status-sold,
-.status-custom{
-
-    display: inline-block;
-
-    padding: 1px 15px;
-
-    border-radius: 999px;
-
-    font-size: 11px;
-
-    font-weight: 400;
-
-    width: fit-content;
+.product-button .btn {
+    font-size: 13px;
+    padding: 8px 0;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
-/* READY */
-.status-ready{
-    border: 1px solid #28a745;
-    color: #28a745;
 
-}
 
-/* SOLD */
-.status-sold{
-    border: 1px solid #dc3545;
-    color: #dc3545;
 
-}
 
-/* CUSTOM */
-.status-custom{
-    border: 1px solid #0d6efd;
-    color: #0d6efd;
-
-}
 
 /* CUSTOM SECTION IMAGE */
 .custom-section-image{
@@ -147,10 +184,33 @@
 }
 
 .custom-section{
-    background-color: #faddc4;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f6e6d7;
     border-radius: 10px;
     padding: 18px;
 }
+
+.btn-showcase {
+    display: inline-flex;
+    align-items: center;
+    background-color: #1a1a1a; 
+    color: #ffffff !important;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(26, 26, 26, 0.15);
+}
+
+.btn-showcase:hover {
+    background-color: #c4a185; 
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(196, 161, 133, 0.25);
+}
+
+
 
 
 /* GALLERY HOME */
@@ -196,6 +256,7 @@
 
 
 
+
 /* CARD WHY CHOOSE US */ 
 .why-card{
     padding: 20px 10px;
@@ -216,9 +277,22 @@
 }
 
 
+
+
 /* CSS UNTUK FOOTER */ 
 .footer-section{
-    background-color: #c4a185;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #fafafa; 
+    border-top: 1px solid #f0f0f0;
+}
+
+.footer-brand {
+    font-family: system-ui, -apple-system, sans-serif; /* Mengikuti font brand logo utama */
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.2rem;
 }
 
 .footer-link{
@@ -241,6 +315,7 @@
     color: #653724c9;
     font-size: 8px;
 }
+
 
 
 /* SEARCH PRODUCT */
@@ -286,21 +361,86 @@
     letter-spacing: 2px;
 }
 
+
+
+
 /* NAVBAR */
-.nav-link.active{
-    color: #fff7ed !important;
+/* Styling Navbar Utama */
+.custom-navbar {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* Efek blur halus jika scroll */
+    border-bottom: 1px solid #f0f0f0; /* Garis pembatas tipis */
+    padding: 1.2rem 0; 
+    transition: all 0.3s ease;
+}
+
+/* Styling Brand / Logo */
+.brand-logo {
+    font-size: 1.4rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #1a1a1a !important; /* Hitam pekat modern, bukan hitam kaku #000 */
+}
+
+/* Jarak antar menu */
+.custom-navbar .nav-item {
+    margin-left: 1.5rem;
+}
+
+/* Styling Link Menu Default */
+.custom-nav-link {
+    color: #666666 !important; /* Warna abu-abu kalem agar terkesan minimalis */
+    font-size: 0.95rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    position: relative;
+    padding: 0.5rem 0 !important;
+    transition: color 0.3s ease;
+}
+
+/* Efek Hover: Berubah warna menjadi earth-tone hangat & muncul garis bawah tipis */
+.custom-nav-link:hover {
+    color: #c4a185 !important;
+}
+
+.custom-nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: #c4a185;
+    transition: width 0.3s ease;
+}
+
+.custom-nav-link:hover::after {
+    width: 100%; /* Garis muncul memanjang dari kiri ke kanan dengan halus */
+}
+
+/* Menu yang sedang Aktif (Active State) */
+.custom-nav-link.active {
+    color: #1a1a1a !important; /* Menu aktif menjadi lebih tegas */
     font-weight: 600;
 }
 
-.nav-item:hover{
-    color: #622B14;
-    letter-spacing: 2px;
-    transition: 0.5s;
+.custom-nav-link.active::after {
+    width: 100%; /* Garis bawah tetap menetap di menu aktif */
 }
 
-.nav-link{
-    color:#000000;
+/* Perbaikan tampilan di Mobile (HP) agar rapi */
+@media (max-width: 991.98px) {
+    .custom-navbar .nav-item {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+    .custom-nav-link::after {
+        display: none; /* Hilangkan animasi garis di HP agar tidak berantakan */
+    }
 }
+
+
 
 
 
@@ -420,7 +560,7 @@
 }
 
 .bg-soft-gray {
-    background-color: #f9f9fb; /* Membuat kontras agar card putih di atasnya "pop out" */
+    background-color: #f9f9fb; 
 }
 
 /* --- Hero Section Styling --- */
@@ -451,7 +591,6 @@
     transform: scale(1.03); /* Efek zoom tipis ala web modern saat di-hover */
 }
 
-/* --- Process Card (Gen-Z / Clean Upgrade) --- */
 .process-card {
     padding: 40px 30px;
     background: #ffffff;
@@ -482,6 +621,7 @@
     transition: color 0.3s ease;
 }
 
+
 /* portofolio card */
 .portofolio-img{
     width: 100%;
@@ -497,9 +637,6 @@
 
 
 /* about page */
-/* --- About Us Specific Styling --- */
-
-/* Gambar dengan efek crop estetik dan bayangan lembut */
 .about-image-wrapper {
     position: relative;
     border-radius: 24px;
@@ -546,3 +683,381 @@
     border-color: #c4a185;
     font-weight: 600;
 }
+
+
+
+
+
+/*    HALAMAN DETAIL PRODUK UTAMA */
+.product-detail-section {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #ffffff;
+}
+
+/* Bingkai Gambar Utama */
+.product-image-container {
+    background-color: #fafafa;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.02);
+}
+
+.main-detail-image {
+    width: 100%;
+    height: 550px;
+    object-fit: cover; 
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Badge Status Minimalis */
+.badge-status {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+}
+
+.status-ready { background-color: #e6f4ea; color: #137333; }
+.status-sold { background-color: #fce8e6; color: #c5221f; }
+.status-custom { background-color: #fef7e0; color: #b06000; }
+
+/* Tipografi Teks Informasi Produk */
+.detail-product-name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.detail-product-price {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #c4a185; 
+    margin-bottom: 2rem;
+}
+
+.detail-divider {
+    height: 1px;
+    background-color: #eeeeee;
+    margin: 2rem 0;
+}
+
+.description-heading {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999999;
+    margin-bottom: 0.8rem;
+}
+
+.detail-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555555;
+}
+
+/* Tombol Aksi Utama (Order / Consult) */
+.btn-detail-main {
+    background-color: #1a1a1a;
+    color: #ffffff !important;
+    text-decoration: none;
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border: 1px solid #1a1a1a;
+}
+
+.btn-detail-main:hover {
+    background-color: #c4a185;
+    border-color: #c4a185;
+    transform: translateY(-2px);
+}
+
+/* Tombol WhatsApp Outline */
+.btn-detail-outline {
+    background-color: transparent;
+    color: #1a1a1a !important;
+    text-decoration: none;
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 10px;
+    border: 1px solid #dddddd;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-detail-outline:hover {
+    background-color: #fafafa;
+    border-color: #1a1a1a;
+    transform: translateY(-2px);
+}
+
+.btn-detail-disabled {
+    background-color: #f5f5f5;
+    color: #bbbbbb;
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 10px;
+    border: 1px solid #eeeeee;
+    cursor: not-allowed;
+}
+
+
+
+/* BAGIAN RELATED PRODUCTS (YOU MAY ALSO LIKE) */
+.related-products-section {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    border-top: 1px solid #f0f0f0;
+}
+
+.related-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.title-line {
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+/* Kartu Produk Kustom */
+.custom-product-card {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.custom-product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    border-color: #e0e0e0;
+}
+
+.card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: #fafafa;
+}
+
+.related-product-image {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+/* Badge mini di atas gambar kartu */
+.card-badge-position {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+.mini-badge-status {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+}
+.m-ready { background-color: rgba(230, 244, 234, 0.95); color: #137333; }
+.m-sold { background-color: rgba(252, 232, 236, 0.95); color: #c5221f; }
+.m-custom { background-color: rgba(254, 247, 224, 0.95); color: #b06000; }
+
+/* Isi teks dalam kartu */
+.custom-card-body {
+    padding: 1.2rem;
+}
+
+.related-product-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.related-product-price {
+    font-size: 0.9rem;
+    color: #777777;
+    margin-bottom: 1rem;
+}
+
+.btn-card-view {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    color: #1a1a1a !important;
+    border: 1px solid #e0e0e0;
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-card-view:hover {
+    background-color: #1a1a1a;
+    color: #ffffff !important;
+    border-color: #1a1a1a;
+}
+
+/* Responsif Layar */
+@media (max-width: 991.98px) {
+    .main-detail-image {
+        height: 380px;
+    }
+    .detail-product-name {
+        font-size: 2rem;
+    }
+}
+
+
+
+
+/* --- TRACK ORDER --- */
+.track-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2.5rem;
+    border: 1px solid #f0f0f0;
+}
+
+.track-card-title {
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+}
+
+/* Grouping Input & Tombol */
+.track-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.track-field {
+    border-radius: 8px !important;
+    padding: 0.75rem 1rem;
+    border: 1px solid #dddddd;
+    box-shadow: none !important;
+    transition: border-color 0.2s ease;
+}
+
+.track-field:focus {
+    border-color: #1a1a1a;
+}
+
+.btn-track-submit {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    padding: 0 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.btn-track-submit:hover {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+/* Garis Pembatas Halus */
+.track-result-separator {
+    height: 1px;
+    background-color: #eeeeee;
+    margin: 2rem 0;
+}
+
+/* Kotak Detail Gaya Nota Informasi */
+.order-invoice-box {
+    background-color: #fcfcfc;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.invoice-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px dashed #eaeaea;
+    font-size: 0.95rem;
+}
+
+.invoice-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.invoice-row:first-child {
+    padding-top: 0;
+}
+
+.invoice-label {
+    color: #666666;
+    font-weight: 500;
+}
+
+.invoice-value {
+    color: #333333;
+    text-align: right;
+}
+
+/* Tombol Download PDF Modern */
+.btn-receipt-download {
+    display: inline-flex;
+    align-items: center;
+    background-color: transparent;
+    color: #28a745 !important;
+    border: 1px solid #28a745;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-receipt-download:hover {
+    background-color: #28a745;
+    color: #ffffff !important;
+}
+
+/* Responsif Mobile */
+@media (max-width: 575.98px) {
+    .track-input-group {
+        flex-direction: column;
+    }
+    .btn-track-submit {
+        padding: 0.75rem;
+    }
+    .invoice-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .invoice-value {
+        text-align: left;
+    }
+}
+

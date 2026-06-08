@@ -40,89 +40,64 @@
 <section class="container py-5">
 
     <div class="text-center mb-5">
-
         <h2 class="fw-bold">
             Most Popular Items
         </h2>
-
         <p class="text-muted">
             Premium furniture with modern minimalist design
         </p>
-
     </div>
 
+    <!-- Cukup SATU Tag Row g-4 di Sini -->
     <div class="row g-4">
 
-        <!-- PRODUCT -->
+        {% for product in products %}
+        <div class="col-lg-3 col-md-4 col-6">
 
-        <div class="row g-4">
+            <div class="product-card">
 
-            {% for product in products %}
+                <!-- Pembungkus Gambar dan Badge agar bisa mengambang -->
+                <div class="product-image-container">
+                    <img src="{{ product.image.url }}" class="img-fluid product-image" alt="{{ product.name }}">
 
-            <div class="col-md-3 col-6">
-
-                <div class="product-card">
-
-                    <img src="{{ product.image.url }}"
-                    class="img-fluid product-image">
-
-                    <div class="product-card-body">
-
+                    <!-- Badge Status dipindah ke dalam wadah gambar -->
+                    <div class="product-status-badge">
                         {% if product.status == 'ready' %}
-
-                            <span class="status-ready">
-                                ready
-                            </span>
-
+                            <span class="status-ready">ready</span>
                         {% elif product.status == 'sold' %}
-
-                            <span class="status-sold">
-                                sold
-                            </span>
-
+                            <span class="status-sold">sold</span>
                         {% elif product.status == 'custom' %}
-
-                            <span class="status-custom">
-                                custom
-                            </span>
-
+                            <span class="status-custom">custom</span>
                         {% endif %}
-
-                        <h5 class="product-title mt-3">
-
-                            {{ product.name }}
-
-                        </h5>
-
-                        <p class="text-muted">
-
-                            Rp {{ product.price }}
-
-                        </p>
-                        
-                        <div class="product-button">
-                            <a href="{% url 'product_detail' product.id %}"
-                            class="btn btn-outline-dark w-100">
-
-                                Details
-
-                            </a>
-                        </div>
-                        
                     </div>
+                </div>
 
+                <div class="product-card-body">
+
+                    <h5 class="product-title">
+                        {{ product.name }}
+                    </h5>
+
+                    <p class="text-muted">
+                        Rp {{ product.price }}
+                    </p>
+                    
+                    <div class="product-button">
+                        <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-dark w-100">
+                            Details
+                        </a>
+                    </div>
+                    
                 </div>
 
             </div>
 
-            {% endfor %}
-
         </div>
+        {% endfor %}
 
     </div>
 
 </section>
-
 
 
 
@@ -162,7 +137,7 @@
             </p>
 
             <a href="{% url 'order_create' %}" 
-            class="btn btn-dark px-4 py-2">
+            class="btn-showcase btn-dark px-4 py-2">
 
                 Start Your Project
 

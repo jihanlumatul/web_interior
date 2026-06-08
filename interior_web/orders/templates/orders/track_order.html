@@ -1,37 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <section class="container py-5">
-
     <div class="row justify-content-center">
-
         <div class="col-lg-6">
 
-            <div class="card shadow-sm border-0 p-4">
+            <div class="track-card shadow-sm">
 
-                <h2 class="fw-bold mb-4">
+                <h2 class="fw-bold mb-4 track-card-title">
                     Track Your Order
                 </h2>
 
-                <form method="POST">
-
+                <form method="POST" class="mb-4">
                     {% csrf_token %}
-
-                    <input
-                        type="text"
-                        name="order_code"
-                        class="form-control mb-3"
-                        placeholder="Enter Order Code"
-                    >
-
-                    <button
-                        class="btn btn-dark">
-
-                        Check Status
-
-                    </button>
-
+                    <div class="track-input-group">
+                        <input
+                            type="text"
+                            name="order_code"
+                            class="form-control track-field"
+                            placeholder="Enter Order Code"
+                            value="{{ request.POST.order_code|default:'' }}"
+                            required
+                        >
+                        <button class="btn btn-track-submit" type="submit">
+                            Check Status
+                        </button>
+                    </div>
                 </form>
 
                 {% if request.method == 'POST' and not order %}
@@ -41,68 +35,70 @@
                 {% endif %}
 
                 {% if order %}
+                <div class="track-result-separator"></div>
+                    <h5 class="detail-box-title">Order Information</h5>
+                <div class="order-invoice-box">
+                    
+                    <div class="invoice-row">
+                        <span class="invoice-label">Order Code: </span>
+                        <span class="invoice-value fw-bold text-dark">{{ order.order_code }}</span>
+                    </div>
 
-                <hr>
+                    <div class="invoice-row">
+                        <span class="invoice-label">Customer:</span>
+                        <span class="invoice-value">{{ order.customer_name }}</span>
+                    </div>
 
-                <p>
-                    <strong>Order Code:</strong>
-                    {{ order.order_code }}
-                </p>
+                    <div class="invoice-row">
+                        <span class="invoice-label">Furniture Type:</span>
+                        <span class="invoice-value">{{ order.furniture_type }}</span>
+                    </div>
 
-                <p>
-                    <strong>Customer:</strong>
-                    {{ order.customer_name }}
-                </p>
-
-                <p>
-                    <strong>Furniture:</strong>
-                    {{ order.furniture_type }}
-                </p>
-
-                <p>
-                    <strong>Status:</strong>
-
-                    {% if order.status == 'pending' %}
-
-                        <span class="badge bg-warning text-dark">
-                            Pending
+                    <div class="invoice-row">
+                        <span class="invoice-label">Status:</span>
+                        <span class="invoice-value">
+                            {% if order.status == 'pending' %}
+                                <span class="badge bg-warning text-dark px-3 py-2">
+                                    Pending
+                                </span>
+                            {% elif order.status == 'paid' %}
+                                <span class="badge bg-primary px-3 py-2">
+                                    Paid
+                                </span>
+                            {% elif order.status == 'progress' %}
+                                <span class="badge bg-info text-dark px-3 py-2">
+                                    In Progress
+                                </span>
+                            {% elif order.status == 'delivery' %}
+                                <span class="badge bg-secondary px-3 py-2">
+                                    Out for Delivery
+                                </span>
+                            {% elif order.status == 'completed' %}
+                                <span class="badge bg-success px-3 py-2">
+                                    Completed
+                                </span>
+                            {% endif %}
                         </span>
+                    </div>
 
-                    {% elif order.status == 'paid' %}
+                    <div class="invoice-row">
+                        <span class="invoice-label">Order Date:</span>
+                        <span class="invoice-value text-muted">{{ order.created_at }}</span>
+                    </div>
 
-                        <span class="badge bg-primary">
-                            Paid
-                        </span>
+                    <div class="invoice-row">
+                        <span class="invoice-label">Address:</span>
+                        <span class="invoice-value text-muted">{{ order.address }}</span>
+                    </div>
 
-                    {% elif order.status == 'progress' %}
+                </div>
 
-                        <span class="badge bg-info text-dark">
-                            In Progress
-                        </span>
-
-                    {% elif order.status == 'delivery' %}
-
-                        <span class="badge bg-secondary">
-                            Out for Delivery
-                        </span>
-
-                    {% elif order.status == 'completed' %}
-
-                        <span class="badge bg-success">
-                            Completed
-                        </span>
-
-                    {% endif %}
-                </p>
-
-                <p>
-                    <strong>Order Date:</strong>
-                    {{ order.created_at }}
-                </p>
-
-                <div class="mt-4">
-                    <a href="{% url 'download_receipt' order.id %}"
-                    class="btn btn-success">
+                <div class="mt-4 text-end">
+                    <a href="{% url 'download_receipt' order.id %}" class="btn btn-receipt-download">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download me-2" viewBox="0 0 16 16">
+                          <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                          <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                        </svg>
                         Download Receipt PDF
                     </a>
                 </div>
@@ -110,12 +106,7 @@
                 {% endif %}
 
             </div>
-
-
         </div>
-
     </div>
-
 </section>
-
 {% endblock %}

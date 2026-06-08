@@ -5,7 +5,7 @@ from orders.models import Order
 
 def home(request):
 
-    products = Product.objects.all()
+    products = Product.objects.all()[:4]
 
     return render(request, 'home.html', {
         'products': products

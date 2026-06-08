@@ -1,88 +1,156 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    .consultation-section {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #fbfbfb;
+    }
+    
+    .consultation-card {
+        background: #ffffff;
+        border-radius: 16px;
+        border: 1px solid #f0f0f0;
+    }
 
-<section class="container py-5">
+    .consultation-title {
+        color: #1a1a1a;
+        letter-spacing: -0.5px;
+    }
 
+    /* Memaksa elemen form bawaan Django agar mengikuti style Bootstrap */
+    .consultation-card input[type="text"],
+    .consultation-card input[type="email"],
+    .consultation-card textarea,
+    .consultation-card select {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        appearance: none;
+        border-radius: 8px;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    /* Efek fokus estetik berwarna gelap minimalis */
+    .consultation-card input:focus,
+    .consultation-card textarea:focus,
+    .consultation-card select:focus {
+        color: #212529;
+        background-color: #fff;
+        border-color: #1a1a1a;
+        outline: 0;
+        box-shadow: 0 0 0 4px rgba(26, 26, 26, 0.05);
+    }
+
+    /* Styling khusus untuk input file (Upload Gambar) */
+    .consultation-card input[type="file"] {
+        font-size: 0.9rem;
+        color: #555555;
+    }
+    .consultation-card input[type="file"]::-webkit-file-upload-button {
+        background: #1a1a1a;
+        color: #ffffff;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+    .consultation-card input[type="file"]::-webkit-file-upload-button:hover {
+        background: #333333;
+    }
+
+    /* Desain tombol submit agar lebih elegan */
+    .btn-consultation-submit {
+        background-color: #1a1a1a;
+        color: #ffffff;
+        border: none;
+        padding: 0.75rem 2rem;
+        font-size: 0.95rem;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+    }
+
+    .btn-consultation-submit:hover {
+        background-color: #333333;
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+</style>
+
+<section class="consultation-section container py-5">
     <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-9">
 
-        <div class="col-lg-8">
+            <div class="consultation-card shadow-sm p-4 p-md-5">
 
-            <div class="card border-0 shadow-sm p-4">
+                <div class="mb-4">
+                    <h1 class="fw-bold consultation-title mb-2">
+                        Request Consultation
+                    </h1>
+                    <p class="text-muted small">Fill out the form below to discuss your custom furniture project with our team.</p>
+                </div>
 
-                <h1 class="fw-bold mb-4">
-                    Request Consultation
-                </h1>
-
-                <form method="POST"
-                    enctype="multipart/form-data">
-
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
 
                     <div class="mb-3">
-                        <label class="form-label">
-                            Full Name
-                        </label>
-
+                        <label class="form-label fw-500 text-secondary small">Full Name</label>
                         {{ form.customer_name }}
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">
-                            Email Address
-                        </label>
-
+                        <label class="form-label fw-500 text-secondary small">Email Address</label>
                         {{ form.email }}
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">
-                            Phone Number
-                        </label>
-
+                        <label class="form-label fw-500 text-secondary small">Phone Number</label>
                         {{ form.phone }}
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">
-                            Furniture Type
-                        </label>
+                        <label class="form-label fw-500 text-secondary small">Delivery Address</label>
+                        {{ form.address }}
+                    </div>
 
+                    <div class="mb-3">
+                        <label class="form-label fw-500 text-secondary small">Furniture Type</label>
                         {{ form.furniture_type }}
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">
-                            Project Description
-                        </label>
-
+                        <label class="form-label fw-500 text-secondary small">Project Description</label>
                         {{ form.description }}
                     </div>
 
                     <div class="mb-4">
-                        <label class="form-label">
-                            Reference Image
-                        </label>
-
-                        {{ form.reference_image }}
+                        <label class="form-label fw-500 text-secondary small">Reference Image</label>
+                        <div class="p-2 border border-dashed rounded-3 bg-light">
+                            {{ form.reference_image }}
+                        </div>
                     </div>
 
-                    <button
-                        type="submit"
-                        class="btn btn-dark px-4">
-
-                        Submit Request
-
-                    </button>
+                    <div class="text-end mt-4">
+                        <button type="submit" class="btn-consultation-submit w-100 w-sm-auto">
+                            Submit Request
+                        </button>
+                    </div>
 
                 </form>
 
             </div>
 
         </div>
-
     </div>
-
 </section>
-
 {% endblock %}

@@ -23,7 +23,8 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = (
         'customer_name',
         'phone',
-        'order_code'
+        'order_code',
+        'address'
     )
 
     readonly_fields = (

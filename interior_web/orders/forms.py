@@ -8,6 +8,7 @@ class OrderForm(forms.ModelForm):
             'customer_name',
             'email',
             'phone',
+            'address',
             'furniture_type',
             'description',
             'reference_image'

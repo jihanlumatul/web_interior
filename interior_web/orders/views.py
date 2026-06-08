@@ -4,6 +4,8 @@ from products.models import Product
 from .models import Order
 from django.http import HttpResponse
 from reportlab.pdfgen import canvas
+from reportlab.lib import colors
+from datetime import datetime
 
 def order_create(request):
     form = OrderForm()
@@ -115,20 +117,139 @@ def download_receipt(request, order_id):
 
     p = canvas.Canvas(response)
 
-    p.setFont("Helvetica-Bold", 18)
-    p.drawString(100, 800, "MKD DESIGN")
+    # HEADER
 
-    p.setFont("Helvetica", 12)
+    p.setFont("Helvetica-Bold", 22)
+    p.drawString(50, 800, "MKD DESIGN")
 
-    p.drawString(100, 760, f"Order ID : {order.order_code}")
-    p.drawString(100, 740, f"Customer : {order.customer_name}")
-    p.drawString(100, 720, f"Phone : {order.phone}")
-    p.drawString(100, 700, f"Furniture : {order.furniture_type}")
-    p.drawString(100, 680, f"Status : {order.status}")
+    p.setFont("Helvetica", 11)
+    p.drawString(
+        50,
+        782,
+        "Furniture & Interior Solution"
+    )
+
+    # GARIS HEADER
+
+    p.line(50, 770, 550, 770)
+
+    # JUDUL
+
+    p.setFont("Helvetica-Bold", 16)
+    p.drawString(50, 735, "ORDER RECEIPT")
+
+    # INFO RECEIPT
+
+    p.setFont("Helvetica", 11)
 
     p.drawString(
-        100,
-        640,
+        400,
+        735,
+        f"Date: {datetime.now().strftime('%d/%m/%Y')}"
+    )
+
+    # GARIS
+
+    p.line(50, 720, 550, 720)
+
+    # DETAIL ORDER
+
+    y = 680
+
+    p.setFont("Helvetica-Bold", 12)
+    p.drawString(50, y, "Order Information")
+
+    y -= 30
+
+    p.setFont("Helvetica", 11)
+
+    p.drawString(
+        70,
+        y,
+        f"Order Code : {order.order_code}"
+    )
+
+    y -= 25
+
+    p.drawString(
+        70,
+        y,
+        f"Customer Name : {order.customer_name}"
+    )
+
+    y -= 25
+
+    p.drawString(
+        70,
+        y,
+        f"Email : {order.email}"
+    )
+
+    y -= 25
+
+    p.drawString(
+        70,
+        y,
+        f"Phone : {order.phone}"
+    )
+
+    y -= 25
+
+    p.drawString(
+        70,
+        y,
+        f"Address : {order.address}"
+    )
+
+    y-= 25
+
+    p.drawString(
+        70,
+        y,
+        f"Furniture : {order.furniture_type}"
+    )
+
+    y -= 25
+
+    p.drawString(
+        70,
+        y,
+        f"Status : {order.get_status_display()}"
+    )
+
+    y -= 25
+
+    p.drawString(
+        70,
+        y,
+        f"Order Date : {order.created_at.strftime('%d %B %Y')}"
+    )
+
+    # BOX
+
+    p.rect(50, 450, 500, 260)
+
+    # FOOTER
+
+    p.line(50, 150, 550, 150)
+
+    p.setFont("Helvetica-Oblique", 10)
+
+    p.drawString(
+        50,
+        130,
+        "This receipt serves as proof of order."
+    )
+
+    p.drawString(
+        50,
+        115,
+        "Please keep this document for future reference."
+    )
+
+    p.drawString(
+        50,
+        80,
         "Thank you for choosing MKD Design."
     )
 

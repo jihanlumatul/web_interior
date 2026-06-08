@@ -1,187 +1,112 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- MAIN PRODUCT DETAIL -->
+<section class="product-detail-section py-5">
+  <div class="container py-4">
+    <div class="row g-5 align-items-start"> <!-- Mengubah align-items-center ke start agar posisi teks rapi di atas jika deskripsi panjang -->
 
-<section class="container py-5">
+      <!-- LEFT: IMAGE GALLERY DISPLAY -->
+      <div class="col-lg-6">
+        <div class="product-image-container">
+          <img src="{{ product.image.url }}" class="img-fluid main-detail-image" alt="{{ product.name }}">
+        </div>
+      </div>
 
-    <div class="row align-items-center g-5">
-
-        <!-- IMAGE -->
-
-        <div class="col-lg-6">
-
-            <img src="{{ product.image.url }}"
-            class="img-fluid detail-image">
-
+      <!-- RIGHT: PRODUCT INFO & ACTION -->
+      <div class="col-lg-6 product-info-container">
+        
+        <!-- Status Badge -->
+        <div class="status-badge-wrapper">
+          {% if product.status == 'ready' %}
+            <span class="badge-status status-ready">Ready Stock</span>
+          {% elif product.status == 'sold' %}
+            <span class="badge-status status-sold">Sold Out</span>
+          {% elif product.status == 'custom' %}
+            <span class="badge-status status-custom">Custom Order</span>
+          {% endif %}
         </div>
 
-        <!-- DETAIL -->
+        <!-- Product Title -->
+        <h1 class="detail-product-name">{{ product.name }}</h1>
 
-        <div class="col-lg-6">
+        <!-- Product Price -->
+        <h3 class="detail-product-price">Rp {{ product.price }}</h3>
 
-            {% if product.status == 'ready' %}
+        <!-- Divider tipis -->
+        <div class="detail-divider"></div>
 
-                <span class="status-ready">
-                    ready
-                </span>
-
-            {% elif product.status == 'sold' %}
-
-                <span class="status-sold">
-                    sold
-                </span>
-
-            {% elif product.status == 'custom' %}
-
-                <span class="status-custom">
-                    custom
-                </span>
-
-            {% endif %}
-
-            <h1 class="fw-bold mt-3">
-
-                {{ product.name }}
-
-            </h1>
-
-            <h3 class="text-muted mt-3">
-
-                Rp {{ product.price }}
-
-            </h3>
-
-            <p class="detail-description mt-4">
-
-                {{ product.description }}
-
-            </p>
-
-            <div class="d-flex gap-3 mt-4">
-
-                {% if product.status == 'ready' %}
-
-                    <a href="{% url 'order_product' product.id %}"
-                    class="btn btn-dark px-4 py-3">
-
-                        Order Now
-
-                    </a>
-
-                {% elif product.status == 'custom' %}
-
-                    <a href="{% url 'order_create' %}"
-                    class="btn btn-dark px-4 py-3">
-
-                        Request Consultation
-
-                    </a>
-
-                {% else %}
-
-                    <button class="btn btn-secondary px-4 py-3"
-                    disabled>
-
-                        Out Of Stock
-
-                    </button>
-
-                {% endif %}
-
-                <a href="https://wa.me/6285669976295?text=Halo%20MKD%20Design,%0A%0ASaya%20tertarik%20dengan%20produk:%20{{ product.name }}%0AHarga:%20Rp%20{{ product.price }}%0A%0AMohon%20informasi%20lebih%20lanjut."
-                target="_blank"
-                class="btn btn-outline-dark px-4 py-3">
-
-                    Contact WhatsApp
-
-                </a>
-
-            </div>
-
+        <!-- Product Description -->
+        <div class="detail-description-wrapper">
+          <h6 class="description-heading">Description / Specifications</h6>
+          <p class="detail-description">{{ product.description }}</p>
         </div>
 
+        <!-- Action Buttons CTA -->
+        <div class="d-flex flex-sm-row flex-column gap-3 mt-5">
+          {% if product.status == 'ready' %}
+            <a href="{% url 'order_product' product.id %}" class="btn-detail-main flex-grow-1">
+              Order Now
+            </a>
+          {% elif product.status == 'custom' %}
+            <a href="{% url 'order_create' %}" class="btn-detail-main flex-grow-1">
+              Request Consultation
+            </a>
+          {% else %}
+            <button class="btn-detail-disabled flex-grow-1" disabled>
+              Out Of Stock
+            </button>
+          {% endif %}
+
+          <a href="https://wa.me/6285669976295?text=Halo%20MKD%20Design,%0A%0ASaya%20tertarik%20dengan%20produk:%20{{ product.name }}%0AHarga:%20Rp%20{{ product.price }}%0A%0AMohon%20informasi%20lebih%20lanjut."
+             target="_blank" class="btn-detail-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp me-2" viewBox="0 0 16 16">
+              <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.925h.004c4.368 0 7.926-3.559 7.93-7.93a7.9 7.9 0 0 0-2.327-5.596ZM5.708 4.655c.122-.272.245-.274.364-.274.113-.005.244-.005.375.005.131.01.343.059.522.257.18.197.684.667.842.994.159.327.08.599-.028.812-.109.213-.18.344-.36.554-.18.21-.377.468-.539.63-.162.163-.33.34-.14.669.19.327.844 1.39 1.81 2.252.124.11.233.163.346.21.23.094.437.08.601.056.183-.027.562-.23 1.134-.562.183-.105.308-.2.378-.204.075-.003.224.04.474.165.25.125 1.666.785 1.745.845.079.06.13.088.148.121.019.032.019.188-.062.434-.081.247-.478.483-.664.514-.186.03-.368.047-.534-.044-.166-.092-.533-.213-1.013-.428-3.723-1.66-6.117-5.434-6.302-5.68-.184-.247-1.31-1.745-1.31-3.327 0-1.583.824-2.36 1.115-2.673.291-.314.637-.39.81-.39H5.71v-.003Z"/>
+            </svg>
+            Contact WhatsApp
+          </a>
+        </div>
+
+      </div>
     </div>
-
+  </div>
 </section>
 
-<section class="container py-5">
-
-    <div class="text-center mb-5">
-
-        <h2 class="fw-light">
-
-            You May Also Like
-
-        </h2>
-
+<!-- RELATED PRODUCTS SECTION -->
+<section class="related-products-section py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3 class="related-title">You May Also Like</h3>
+      <div class="title-line flex-grow-1 ms-4 d-none d-sm-block"></div>
     </div>
 
     <div class="row g-4">
-
-        {% for product in related_products %}
-
-        <div class="col-lg-3 col-md-4 col-6">
-
-            <div class="product-card">
-
-                <img src="{{ product.image.url }}"
-                class="img-fluid product-image">
-
-                <div class="product-card-body">
-
-                    {% if product.status == 'ready' %}
-
-                        <span class="status-ready">
-                            ready
-                        </span>
-
-                    {% elif product.status == 'sold' %}
-
-                        <span class="status-sold">
-                            sold
-                        </span>
-
-                    {% elif product.status == 'custom' %}
-
-                        <span class="status-custom">
-                            custom
-                        </span>
-
-                    {% endif %}
-
-                    <h5 class="product-title mt-3">
-
-                        {{ product.name }}
-
-                    </h5>
-
-                    <p class="text-muted">
-
-                        Rp {{ product.price }}
-
-                    </p>
-
-                    <div class="product-button">
-
-                        <a href="{% url 'product_detail' product.id %}"
-                        class="btn btn-outline-dark w-100">
-
-                            Details
-
-                        </a>
-
-                    </div>
-
-                </div>
-
+      {% for product in related_products %}
+      <div class="col-lg-3 col-md-4 col-6">
+        <div class="custom-product-card">
+          <div class="card-image-wrapper">
+            <img src="{{ product.image.url }}" class="card-img-top related-product-image" alt="{{ product.name }}">
+            <div class="card-badge-position">
+              {% if product.status == 'ready' %}
+                <span class="mini-badge-status m-ready">Ready</span>
+              {% elif product.status == 'sold' %}
+                <span class="mini-badge-status m-sold">Sold</span>
+              {% elif product.status == 'custom' %}
+                <span class="mini-badge-status m-custom">Custom</span>
+              {% endif %}
             </div>
-
+          </div>
+          <div class="custom-card-body">
+            <h5 class="related-product-title">{{ product.name }}</h5>
+            <p class="related-product-price">Rp {{ product.price }}</p>
+            <a href="{% url 'product_detail' product.id %}" class="btn-card-view">
+              View Details
+            </a>
+          </div>
         </div>
-
-        {% endfor %}
-
+      </div>
+      {% endfor %}
     </div>
-
+  </div>
 </section>
-
 {% endblock %}

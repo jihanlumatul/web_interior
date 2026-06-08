@@ -1,52 +1,46 @@
-<nav class="navbar navbar-expand-lg" style="background-color: #c4a185;">
+<nav class="navbar navbar-expand-lg custom-navbar sticky-top">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#">MKD Design</a>
+    <a class="navbar-brand brand-logo" href="#">MKD Design</a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto align-items-center">
 
         <li class="nav-item">
-          <a class="nav-link {% if request.path == '/' %}active{% endif %}" 
-          href="{% url 'home' %}">
+          <a class="nav-link custom-nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">
             Home
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link {% if request.path == '/products/all/' %}active{% endif %}" 
-          href="{% url 'products' %}">
+          <a class="nav-link custom-nav-link {% if request.path == '/products/all/' %}active{% endif %}" href="{% url 'products' %}">
             Product
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link {% if request.path == '/gallery/' %}active{% endif %}" 
-          href="{% url 'gallery' %}">
+          <a class="nav-link custom-nav-link {% if request.path == '/gallery/' %}active{% endif %}" href="{% url 'gallery' %}">
             Gallery
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link {% if request.path == '/products/custom/' %}active{% endif %}" 
-          href="{% url 'custom' %}">
+          <a class="nav-link custom-nav-link {% if request.path == '/products/custom/' %}active{% endif %}" href="{% url 'custom' %}">
             Custom
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link {% if request.path == '/products/about/' %}active{% endif %}" 
-          href="{% url 'about' %}">
+          <a class="nav-link custom-nav-link {% if request.path == '/products/about/' %}active{% endif %}" href="{% url 'about' %}">
             About Us
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link {% if request.path == '/orders/track-order/' %}active{% endif %}" 
-          href="{% url 'track_order' %}">
+          <a class="nav-link custom-nav-link {% if request.path == '/orders/track-order/' %}active{% endif %}" href="{% url 'track_order' %}">
             Track Order
           </a>
         </li>

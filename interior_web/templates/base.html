@@ -11,6 +11,11 @@
     <!--CSS-->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Interior Website</title>
+    <!-- Link Font -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -33,7 +38,7 @@
                 <!-- COMPANY -->
                 <div class="col-md-4 mb-4">
 
-                    <h3 class="fw-bold text-black">
+                    <h3 class="footer-brand">
                         MKD Design
                     </h3>
 
@@ -53,26 +58,12 @@
                         Navigation
                     </h5>
 
-                    <ul class="list-unstyled mt-3">
-
-                        <li>
-                            <a href="{% url 'home' %}" class="footer-link">
-                                Home
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="{% url 'products' %}" class="footer-link">
-                                Products
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="{% url 'gallery' %}" class="footer-link">
-                                Gallery
-                            </a>
-                        </li>
-
+                    <ul class="list-unstyled footer-menu-list">
+                        <li><a href="{% url 'home' %}" class="footer-link">Home</a></li>
+                        <li><a href="{% url 'products' %}" class="footer-link">Products</a></li>
+                        <li><a href="{% url 'gallery' %}" class="footer-link">Gallery</a></li>
+                        <li><a href="{% url 'custom' %}" class="footer-link">Custom</a></li>
+                        <li><a href="{% url 'about' %}" class="footer-link">About Us</a></li>
                     </ul>
 
                 </div>
@@ -107,12 +98,16 @@
 
                     <div class="mt-3">
 
-                        <a href="#" class="footer-link me-3">
+                        <a href="https://www.instagram.com/mkd.design?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="footer-link me-3">
                             Instagram
                         </a>
 
-                        <a href="#" class="footer-link">
+                        <a href="https://www.tiktok.com/@mkd.design?is_from_webapp=1&sender_device=pc" class="footer-link me-3">
                             Tiktok
+                        </a>
+
+                        <a href="https://maps.app.goo.gl/Zh8ucVdCKKWwfZAE6" class="footer-link">
+                            Location
                         </a>
 
                     </div>
